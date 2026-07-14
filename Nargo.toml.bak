@@ -1,0 +1,6 @@
+[package]
+name = "ultrahonk_hello"
+type = "bin"
+authors = [""]
+
+[dependencies]

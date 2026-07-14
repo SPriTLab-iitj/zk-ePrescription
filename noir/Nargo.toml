@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "common",
+  "phase1_commitment",
+]
+default-member = "phase1_commitment"

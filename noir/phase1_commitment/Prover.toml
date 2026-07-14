@@ -1,0 +1,7 @@
+prescription_id = "1001"
+doctor_id = "5001"
+medicine_code = "123"
+
+patient_secret = "12345"
+
+slot_index = "1"

@@ -1,0 +1,7 @@
+[package]
+name = "phase1_commitment"
+type = "bin"
+authors = ["Satyam"]
+
+[dependencies]
+common = { path = "../common" }
