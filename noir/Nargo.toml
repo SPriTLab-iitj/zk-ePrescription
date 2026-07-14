@@ -1,6 +1,8 @@
 [workspace]
 members = [
-  "common",
-  "phase1_commitment",
+    "common",
+    "phase1_commitment",
+    "phase2_policy",
 ]
-default-member = "phase1_commitment"
+
+default-member = "phase2_policy"
