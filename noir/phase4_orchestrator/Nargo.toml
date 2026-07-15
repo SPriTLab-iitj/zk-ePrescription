@@ -1,0 +1,7 @@
+[package]
+name = "phase4_orchestrator"
+type = "bin"
+authors = ["Satyam"]
+
+[dependencies]
+common = { path = "../common" }

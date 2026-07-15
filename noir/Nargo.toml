@@ -5,6 +5,7 @@ members = [
     "phase2_policy",
     "phase3_registry",
     "registry_generator",
+    "phase4_orchestrator",
 ]
 
-default-member = "registry_generator"
+default-member = "phase4_orchestrator"
