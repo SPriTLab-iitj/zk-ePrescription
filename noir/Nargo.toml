@@ -3,6 +3,8 @@ members = [
     "common",
     "phase1_commitment",
     "phase2_policy",
+    "phase3_registry",
+    "registry_generator",
 ]
 
-default-member = "phase2_policy"
+default-member = "registry_generator"

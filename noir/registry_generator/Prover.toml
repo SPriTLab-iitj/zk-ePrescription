@@ -1,0 +1,17 @@
+doctor1_id = "5001"
+doctor1_pubkey_x = "1111"
+doctor1_pubkey_y = "2222"
+
+doctor2_id = "5002"
+doctor2_pubkey_x = "3333"
+doctor2_pubkey_y = "4444"
+
+doctor3_id = "5003"
+doctor3_pubkey_x = "5555"
+doctor3_pubkey_y = "6666"
+
+doctor4_id = "5004"
+doctor4_pubkey_x = "7777"
+doctor4_pubkey_y = "8888"
+
+doctor_index = "2"
