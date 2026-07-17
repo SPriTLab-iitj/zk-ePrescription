@@ -58,6 +58,10 @@ fn domain_tagged_hash<let N: u32>(domain: Field, inputs: [Field; N]) -> Field {
 // Public wrappers
 // -----------------------------------------------------------------------
 
+pub fn poseidon2_hash_raw<let N: u32>(inputs: [Field; N]) -> Field {
+    poseidon2_hash(inputs)
+}
+
 pub fn commitment_hash<let N: u32>(inputs: [Field; N]) -> Field {
     domain_tagged_hash(DOMAIN_COMMITMENT, inputs)
 }
@@ -81,10 +85,10 @@ pub fn registry_leaf_hash(
 pub fn merkle_node_hash(left: Field, right: Field) -> Field {
     domain_tagged_hash(DOMAIN_MERKLE_NODE, [left, right])
 }
+
 // -----------------------------------------------------------------------
 // Unit Tests
 // -----------------------------------------------------------------------
-
 
 mod tests {
     use super::{
@@ -96,11 +100,6 @@ mod tests {
         registry_leaf_hash,
     };
 
-    // ------------------------------------------------------------
-    // Test 1
-    // Sponge determinism
-    // ------------------------------------------------------------
-
     #[test]
     fn sponge_is_deterministic() {
         let inputs: [Field; 5] = [1, 2, 3, 4, 5];
@@ -110,11 +109,6 @@ mod tests {
 
         assert(a == b);
     }
-
-    // ------------------------------------------------------------
-    // Test 2
-    // Domain separation
-    // ------------------------------------------------------------
 
     #[test]
     fn domain_separation_holds() {
@@ -128,11 +122,6 @@ mod tests {
         assert(commitment != nullifier);
         assert(identity != nullifier);
     }
-
-    // ------------------------------------------------------------
-    // Test 3
-    // Registry leaf determinism
-    // ------------------------------------------------------------
 
     #[test]
     fn registry_leaf_is_deterministic() {
@@ -148,34 +137,23 @@ mod tests {
         assert(a != d);
     }
 
-    // ------------------------------------------------------------
-    // Test 4
-    // Domain separation between leaf and node
-    // ------------------------------------------------------------
-
     #[test]
     fn registry_leaf_and_node_are_different() {
         let leaf = registry_leaf_hash(10, 20, 30);
-
         let node = merkle_node_hash(10, 20);
 
         assert(leaf != node);
     }
 
-    // ------------------------------------------------------------
-    // Test 5
-    // Merkle node order sensitivity
-    // ------------------------------------------------------------
-
     #[test]
     fn merkle_node_is_order_sensitive() {
         let left_right = merkle_node_hash(111, 222);
-
         let right_left = merkle_node_hash(222, 111);
 
         assert(left_right != right_left);
     }
 }
+
 #[test]
 fn different_input_lengths_produce_different_hashes() {
     let a = commitment_hash([1, 2, 3]);

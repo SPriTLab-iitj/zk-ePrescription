@@ -1,10 +1,8 @@
-/// Phase 4A
-///
-/// Placeholder for Schnorr signature verification.
-///
-/// The real implementation will be introduced in
-/// Phase 5 after the orchestrator architecture has
-/// been completed and frozen.
+use crate::bjj_core::{Curve, Point, SUBORDER};
+use common::poseidon2_hash::poseidon2_hash_raw;
+
+
+/// BabyJubJub EdDSA verification wrapper.
 pub fn verify_signature(
     commitment: Field,
     doctor_pubkey_x: Field,
@@ -13,17 +11,35 @@ pub fn verify_signature(
     signature_nonce_y: Field,
     signature_s: Field,
 ) -> bool {
+    let curve = Curve::new();
 
-    let _ = commitment;
+    let pub_key = Point::new(doctor_pubkey_x, doctor_pubkey_y);
+    let signature_r8 = Point::new(signature_nonce_x, signature_nonce_y);
 
-    let _ = doctor_pubkey_x;
-    let _ = doctor_pubkey_y;
+    assert(curve.contains(pub_key));
+    assert(curve.contains(signature_r8));
+    assert(signature_s.lt(SUBORDER));
 
-    let _ = signature_nonce_x;
-    let _ = signature_nonce_y;
+    let challenge = poseidon2_hash_raw([
+        signature_nonce_x,
+        signature_nonce_y,
+        doctor_pubkey_x,
+        doctor_pubkey_y,
+        commitment,
+    ]);
 
-    let _ = signature_s;
+    let left = curve.scalar_mul(
+        Curve::generator().into_group(),
+        signature_s,
+    );
 
-    // Temporary placeholder.
-    true
+    let pub_key_8 = curve.double(curve.double(curve.double(pub_key.into_group())));
+    assert(!pub_key_8.is_zero());
+
+    let right = curve.add(
+        signature_r8.into_group(),
+        curve.scalar_mul(pub_key_8, challenge),
+    );
+
+    left.into_affine().equals(right.into_affine())
 }

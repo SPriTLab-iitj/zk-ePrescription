@@ -3,6 +3,7 @@ mod policy;
 mod registry;
 mod schnorr;
 mod outputs;
+mod bjj_core;
 
 use commitment::compute_commitment;
 use policy::evaluate_policy;

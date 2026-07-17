@@ -1,4 +1,5 @@
 [workspace]
+
 members = [
     "common",
     "phase1_commitment",
@@ -6,6 +7,7 @@ members = [
     "phase3_registry",
     "registry_generator",
     "phase4_orchestrator",
+    "beta22_test",
 ]
 
 default-member = "phase4_orchestrator"
