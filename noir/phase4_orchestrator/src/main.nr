@@ -112,7 +112,7 @@ let outputs = finalize_outputs(
 
     assert(policy_result[0]);
     assert(policy_result[1]);
-    let _ = registry_valid;
+    assert(registry_valid);
     assert(signature_valid);
 
     outputs

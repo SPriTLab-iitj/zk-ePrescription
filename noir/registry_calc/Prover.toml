@@ -1,0 +1,8 @@
+doctor_id = 2
+doctor_pubkey_x = "0x16b051f37589e0dcf4ad3c415c090798c10d3095bedeedabfcc709ad787f3507"
+doctor_pubkey_y = "0x62800ac9e60839fab9218e5ed9d541f4586e41275f4071816a975895d349a5e"
+sibling0 = 0
+sibling1 = 0
+direction0 = false
+direction1 = false
+return = [0, 0]

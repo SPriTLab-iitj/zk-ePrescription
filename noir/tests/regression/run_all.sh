@@ -5,5 +5,6 @@ set -e
 ./tests/regression/run_bad_signature.sh
 ./tests/regression/run_expired.sh
 ./tests/regression/run_threshold.sh
+./tests/regression/run_bad_registry.sh
 
 echo "ALL REGRESSION TESTS PASSED"
