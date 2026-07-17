@@ -110,9 +110,10 @@ let outputs = finalize_outputs(
     // constraints in later milestones.)
     // ==========================================================
 
-    let _ = policy_result;
+    assert(policy_result[0]);
+    assert(policy_result[1]);
     let _ = registry_valid;
-    let _ = signature_valid;
+    assert(signature_valid);
 
     outputs
 }
