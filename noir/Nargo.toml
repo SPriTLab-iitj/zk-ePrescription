@@ -2,13 +2,16 @@
 
 members = [
     "common",
+    "merkle",
     "phase1_commitment",
     "phase2_policy",
     "phase3_registry",
-    "registry_generator",
     "phase4_orchestrator",
-    "registry_calc",
-    "beta22_test",
+    "examples/merkle_demo",
+    "merkle_verify_d2",
+    "merkle_verify_d3",
+    "merkle_verify_d4",
+    "tools/registry_generator",
 ]
 
 default-member = "phase4_orchestrator"

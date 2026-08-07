@@ -29,17 +29,13 @@ fn main(
     patient_secret: Field,
     slot_index: u64,
 
-    sibling0: Field,
-    sibling1: Field,
-
-    direction0: bool,
-    direction1: bool,
+    path_elements: [Field; 4],
+    path_indices: [Field; 4],
 
     signature_nonce_x: Field,
     signature_nonce_y: Field,
     signature_s: Field,
 ) -> pub [Field; 2] {
-
     // ==========================================================
     // Phase 4 – Milestone 1
     // Commitment computation
@@ -68,20 +64,18 @@ fn main(
     // Registry verification
     // ==========================================================
 
-    let registry_valid = verify_registry(
+    let registry_valid = verify_registry::<4>(
         registry_root,
         doctor_id,
         doctor_pubkey_x,
         doctor_pubkey_y,
-        sibling0,
-        sibling1,
-        direction0,
-        direction1,
+        path_elements,
+        path_indices,
     );
 
     // ==========================================================
     // Phase 4 – Milestone 4
-    // Schnorr verification (Placeholder)
+    // Schnorr verification
     // ==========================================================
 
     let signature_valid = verify_signature(
@@ -95,19 +89,17 @@ fn main(
 
     // ==========================================================
     // Phase 4 – Milestone 5
-    // Output assembly (Placeholder)
+    // Output assembly
     // ==========================================================
 
-let outputs = finalize_outputs(
-    commitment,
-    patient_secret,
-    slot_index,
-);
+    let outputs = finalize_outputs(
+        commitment,
+        patient_secret,
+        slot_index,
+    );
 
     // ==========================================================
-    // Temporary placeholders
-    // (Policy, Registry and Schnorr will become enforced
-    // constraints in later milestones.)
+    // Final enforced constraints
     // ==========================================================
 
     assert(policy_result[0]);
@@ -117,4 +109,3 @@ let outputs = finalize_outputs(
 
     outputs
 }
-

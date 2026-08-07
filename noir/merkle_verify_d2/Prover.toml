@@ -1,0 +1,10 @@
+leaf = "4"
+
+root = "0x01c5f7ce380535492c1fee946ecb382ec4d012f0fe0c0c17557e2e12348948ce"
+
+[path]
+hashes = [
+  "0x03",
+  "0x0209f7fbcf445e236322368c131f7600b77330e5e1051ccff3064dfa55279a7e"
+]
+dirs = [1, 1]

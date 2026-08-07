@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-ROOT="$HOME/ultrahonk_v1/noir"
+ROOT="$HOME/zk-ePrescription/noir"
 
 run_depth() {
 

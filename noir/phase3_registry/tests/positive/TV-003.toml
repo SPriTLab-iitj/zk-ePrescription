@@ -1,0 +1,9 @@
+registry_root = "0x03deca06195a372ba6726ae970846823de751706149963c81e2097d91b1e78c6"
+doctor_id = "8"
+doctor_pubkey_x = "9"
+doctor_pubkey_y = "10"
+sibling0 = "18"
+sibling1 = "28"
+direction0 = true
+direction1 = true
+return = true

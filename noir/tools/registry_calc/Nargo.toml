@@ -1,0 +1,7 @@
+[package]
+name = "registry_calc"
+type = "bin"
+authors = ["Satyam"]
+
+[dependencies]
+common = { path = "../../common" }

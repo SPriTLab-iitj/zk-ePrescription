@@ -1,0 +1,24 @@
+current_date = 2
+doctor_id = 2
+doctor_pubkey_x = "0x16b051f37589e0dcf4ad3c415c090798c10d3095bedeedabfcc709ad787f3507"
+doctor_pubkey_y = "0x62800ac9e60839fab9218e5ed9d541f4586e41275f4071816a975895d349a5e"
+expiry_date = 1
+medicine_code = 3
+patient_secret = 0
+prescription_id = 1
+quantity_threshold = 1
+registry_root = "0x1231d1c76bf9879ea9d5370033ef0864f263270ce15d0d636dbd4bed430c37c8"
+path_elements = [
+    0,
+    0,
+]
+
+path_indices = [
+    0,
+    0,
+]
+signature_nonce_x = "0x163814666f04c4d2969059a6b63ee26a0f9f0f81bd5957b0796e2e8f4a8a2f06"
+signature_nonce_y = "0x1255b17d9e4bfb81831625b788f8a1665128079ac4b6c8c3cd1b857666a05a54"
+signature_s = "0x1f3f015186badc244cf6ae5eb18fe75b243bb738f4b39a8d2e6e9c753c37683"
+slot_index = 0
+return = ["0x162be49e0c144324bf7421ff597d7cfe64ff68726e8bfb55d1b90844038260f1", "0x07290c4806a9c594b0a27432ccd80c35ed1d57bd0cd2dbce1e5531a52cdc5848"]

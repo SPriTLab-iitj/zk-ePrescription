@@ -1,0 +1,9 @@
+registry_root = "0x244745b948159b0b31b0781062f06f0646bd19b3bb28ce6f08567a35d2ddc3d7"
+doctor_id = "100"
+doctor_pubkey_x = "200"
+doctor_pubkey_y = "300"
+sibling0 = "400"
+sibling1 = "500"
+direction0 = true
+direction1 = false
+return = true
