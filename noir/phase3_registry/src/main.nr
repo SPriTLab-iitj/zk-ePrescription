@@ -1,47 +1,63 @@
-use common::poseidon2_hash::{
-    registry_leaf_hash,
-    merkle_node_hash,
+mod poseidon2_hash;
+mod registry;
+mod fixtures;
+
+use poseidon2_hash::{
+    commitment_hash,
+    identity_hash,
+    nullifier_hash,
 };
+use registry::verify_doctor_membership;
 
 fn main(
-    registry_root: pub Field,
-
+    prescription_id: Field,
     doctor_id: Field,
+    medicine_code: Field,
+    quantity_threshold: u64,
+    expiry_date: u64,
+    current_date: u64,
+    registry_root: pub Field,
     doctor_pubkey_x: Field,
     doctor_pubkey_y: Field,
-
     sibling0: Field,
     sibling1: Field,
-
     direction0: bool,
     direction1: bool,
-) -> pub bool {
+    patient_secret: Field,
+    slot_index: u64
+) -> pub [Field; 2] {
 
-    // Step D1
-    let leaf = registry_leaf_hash(
+    let commitment = commitment_hash([
+        prescription_id,
+        doctor_id,
+        medicine_code,
+        Field::from(quantity_threshold),
+        Field::from(expiry_date)
+    ]);
+
+    let _identity_ref = identity_hash([
+        patient_secret
+    ]);
+
+    verify_doctor_membership(
+        registry_root,
         doctor_id,
         doctor_pubkey_x,
         doctor_pubkey_y,
+        sibling0,
+        sibling1,
+        direction0,
+        direction1
     );
 
-    // Step D2
-    let level0 = if direction0 {
-        merkle_node_hash(sibling0, leaf)
-    } else {
-        merkle_node_hash(leaf, sibling0)
-    };
+    assert(slot_index < quantity_threshold);
+    assert(current_date <= expiry_date);
 
-// Step D3
-let computed_root = if direction1 {
-    merkle_node_hash(sibling1, level0)
-} else {
-    merkle_node_hash(level0, sibling1)
-};
+    let nullifier = nullifier_hash([
+        patient_secret,
+        commitment,
+        Field::from(slot_index)
+    ]);
 
-
-// Step D4
-assert(computed_root == registry_root);
-
-true
-    
+    [commitment, nullifier]
 }

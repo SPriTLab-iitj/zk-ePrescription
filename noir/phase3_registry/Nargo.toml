@@ -1,7 +1,6 @@
 [package]
 name = "phase3_registry"
 type = "bin"
-authors = ["Satyam"]
+authors = [""]
 
 [dependencies]
-common = { path = "../common" }

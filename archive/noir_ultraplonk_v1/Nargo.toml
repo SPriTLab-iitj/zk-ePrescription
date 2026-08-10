@@ -1,0 +1,6 @@
+[package]
+name = "ultra_plonk"
+type = "bin"
+authors = [""]
+
+[dependencies]
