@@ -64,3 +64,27 @@ Thumbs.db
 
 __pycache__/
 *.pyc
+
+# -------------------------------------------------------
+# Circom generated build artifacts
+# -------------------------------------------------------
+
+build/
+release_v1/keys/
+
+*.r1cs
+*.wasm
+*.sym
+*.wtns
+
+# -------------------------------------------------------
+# SnarkJS proving artifacts
+# -------------------------------------------------------
+
+*.zkey
+*.ptau
+
+# Generated proof/public artifacts
+proof*.json
+public*.json
+verification_key*.json
