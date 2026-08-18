@@ -1,7 +1,0 @@
-[package]
-name = "beta22_test"
-type = "bin"
-authors = ["Satyam"]
-
-[dependencies]
-common = { path = "../common" }

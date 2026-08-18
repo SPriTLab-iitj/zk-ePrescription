@@ -1,7 +1,0 @@
-[package]
-name = "merkle_demo"
-type = "bin"
-authors = [""]
-
-[dependencies]
-merkle = { path = "../../merkle" }

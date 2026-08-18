@@ -1,5 +1,0 @@
-quantity_threshold = 5
-slot_index = 2
-expiry_date = 20260730
-current_date = 20260729
-return = [true, true]

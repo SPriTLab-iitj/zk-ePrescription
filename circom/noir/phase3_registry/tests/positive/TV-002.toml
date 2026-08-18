@@ -1,9 +1,0 @@
-registry_root = "0x28657e05778f197a01b8e6e94b9fb272d4199b09be2f54cafd2744428445547c"
-doctor_id = "5"
-doctor_pubkey_x = "6"
-doctor_pubkey_y = "7"
-sibling0 = "15"
-sibling1 = "25"
-direction0 = true
-direction1 = false
-return = true

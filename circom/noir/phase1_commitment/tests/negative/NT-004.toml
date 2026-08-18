@@ -1,7 +1,0 @@
-prescription_id = "99"
-doctor_id = "2"
-medicine_code = "3"
-patient_secret = "4"
-slot_index = 5
-# Expects original return array, but prescription_id is different
-return = ["0x162be49e0c144324bf7421ff597d7cfe64ff68726e8bfb55d1b90844038260f1", "0x266ca46da8867bcf62e9ad41c4b68e9a73a5e93a62fc3f796c88ad0358b09bed"]

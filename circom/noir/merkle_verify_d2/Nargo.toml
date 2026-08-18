@@ -1,7 +1,0 @@
-[package]
-name = "merkle_verify_d2"
-type = "bin"
-authors = [""]
-
-[dependencies]
-merkle = { path = "../merkle" }

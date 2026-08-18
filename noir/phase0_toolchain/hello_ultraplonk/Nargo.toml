@@ -1,6 +1,0 @@
-[package]
-name = "hello_ultraplonk"
-type = "bin"
-authors = [""]
-
-[dependencies]

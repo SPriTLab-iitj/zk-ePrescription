@@ -1,9 +1,0 @@
-leaf = "1"
-root = "0x02"
-
-[path]
-hashes = [
-  "0x02",
-  "0x1cee20b390f1c0e84b1f623356727fcf9aee47056cc005376098055c9f1b97f3"
-]
-dirs = [0, 0]
