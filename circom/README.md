@@ -99,12 +99,19 @@ The circuit verifies a doctor's registry membership using:
 The circuit recomputes the path from the doctor leaf to the root and verifies
 that the resulting root matches the authorized registry root.
 
-### Parameterized Depth
+### Merkle Depth
 
-The Merkle registry is parameterized by tree depth.
+The underlying Merkle verification component is parameterized by tree depth.
+
+The current integrated e-Prescription circuit instantiates the registry at
+depth 4 (16 leaves).
 
 ```text
+Merkle component:
 Depth 2 → 4 leaves
 Depth 4 → 16 leaves
 Depth 8 → 256 leaves
+
+Current integrated circuit:
+Depth 4 → 16-leaf registry
 ```

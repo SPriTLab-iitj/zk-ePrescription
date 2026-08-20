@@ -21,8 +21,8 @@ async function main() {
     root: root
   };
 
-  fs.writeFileSync("inputs/merkle_depth2_leaf0.json", JSON.stringify(input, null, 2));
-  console.log("written inputs/merkle_depth2_leaf0.json");
+  fs.writeFileSync("inputs/merkle/merkle_depth2_leaf0.json", JSON.stringify(input, null, 2));
+  console.log("written inputs/merkle/merkle_depth2_leaf0.json");
   console.log(input);
 }
 

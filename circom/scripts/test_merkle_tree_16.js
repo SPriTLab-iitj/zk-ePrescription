@@ -14,7 +14,7 @@ async function main() {
 
     for (let i = 0; i < values.length; i++) {
         const proof = tree.getProof(i);
-        const filename = `inputs/merkle_depth4_leaf${i}.json`;
+        const filename = `inputs/merkle/merkle_depth4_leaf${i}.json`;
         require("fs").writeFileSync(filename, JSON.stringify(proof, null, 2));
         console.log(`Wrote ${filename}`);
     }

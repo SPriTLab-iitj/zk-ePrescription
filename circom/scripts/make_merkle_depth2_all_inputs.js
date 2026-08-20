@@ -54,7 +54,7 @@ async function main() {
             root: root
         };
 
-        const filename = `inputs/merkle_depth2_leaf${i}.json`;
+        const filename = `inputs/merkle/merkle_depth2_leaf${i}.json`;
 
         fs.writeFileSync(
             filename,
