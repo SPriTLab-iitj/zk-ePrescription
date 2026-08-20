@@ -1,23 +1,33 @@
-Proof System:
-UltraPLONK
+# Noir Cryptographic Stack
 
-Proving Backend:
-UltraHonk
+## Circuit Language
 
-Circuit Language:
 Noir
 
-Compiler:
+## Proving System
+
+UltraHonk
+
+## Proving Backend
+
+Barretenberg
+
+## Compiler
+
 Nargo
 
-Intermediate Representation:
+## Intermediate Representation
+
 ACIR
 
-Pairing Curve:
+## Pairing Curve
+
 BN254
 
-Signature Curve:
+## Signature Curve
+
 BabyJubJub
 
-Hash Function:
-Poseidon
+## Hash Function
+
+Poseidon2
