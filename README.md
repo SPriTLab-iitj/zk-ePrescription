@@ -12,6 +12,36 @@ The protocol enables a verifier to establish that a prescription satisfies
 the required verification conditions while minimizing disclosure of sensitive
 prescription information.
 
+## Goals and Objectives
+
+The zk-ePrescription prototype is designed to provide:
+
+- **Prescription Integrity** — protect prescription data from unauthorized modification.
+- **Prescription Authenticity** — verify that the prescription commitment was signed by an authorized doctor.
+- **Authorized Doctor Verification** — verify that the signing doctor is part of the trusted doctor registry.
+- **Patient–Prescription Binding** — associate a prescription with the registered patient's health identity during issuance.
+- **Patient Privacy** — minimize unnecessary exposure of sensitive patient and prescription information.
+- **Selective Disclosure** — reveal only the prescription attributes required for verification.
+- **Zero-Knowledge Verification** — prove required prescription properties without revealing the complete private witness.
+- **Policy Enforcement** — enforce expiry and redemption limits.
+- **Replay Protection** — prevent reuse of an already redeemed redemption slot.
+- **Bearer-Friendly Redemption** — allow the patient or an authorized bearer such as a relative to redeem the prescription.
+- **Redemption Accountability** — record redemption events and support patient-side tracking and notification.
+- **Minimal Pharmacy Dependency** — avoid repeated authentication against the national/medical health-identity system during dispensing.
+- **Cross-System Evaluation** — provide implementations in Circom/Groth16 and Noir/UltraHonk for comparative research.
+- **Reproducibility** — provide deterministic test vectors, positive/negative tests, and reproducible proof verification.
+
+### Core Research Objectives
+
+At a higher level, the project focuses on:
+
+> **Integrity + Authenticity + Patient Binding + Privacy**
+
+> **Selective Disclosure + Policy Enforcement + Replay Resistance**
+
+> **Accountability + Practical Pharmacy Workflow + Reproducibility**
+
+
 The prototype covers:
 
 - prescription commitment,

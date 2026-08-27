@@ -42,6 +42,7 @@ global DOMAIN_IDENTITY: Field = 2;
 global DOMAIN_NULLIFIER: Field = 3;
 global DOMAIN_REGISTRY_LEAF: Field = 4;
 global DOMAIN_MERKLE_NODE: Field = 5;
+global DOMAIN_PATIENT_BINDING: Field = 6;
 
 fn domain_tagged_hash<let N: u32>(domain: Field, inputs: [Field; N]) -> Field {
     let mut tagged: [Field; N + 1] = [0; N + 1];
@@ -85,6 +86,11 @@ pub fn registry_leaf_hash(
 pub fn merkle_node_hash(left: Field, right: Field) -> Field {
     domain_tagged_hash(DOMAIN_MERKLE_NODE, [left, right])
 }
+
+pub fn patient_binding_hash<let N: u32>(inputs: [Field; N]) -> Field {
+    domain_tagged_hash(DOMAIN_PATIENT_BINDING, inputs)
+}
+
 
 // -----------------------------------------------------------------------
 // Unit Tests

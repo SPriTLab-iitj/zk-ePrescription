@@ -3,6 +3,7 @@ mod policy;
 mod registry;
 mod schnorr;
 mod outputs;
+mod disclosure;
 mod bjj_core;
 
 use commitment::compute_commitment;
@@ -21,6 +22,7 @@ fn main(
     doctor_pubkey_y: Field,
 
     medicine_code: Field,
+    disclosed_medicine_code: Field,
 
     quantity_threshold: u64,
     expiry_date: u64,
@@ -45,6 +47,15 @@ fn main(
         prescription_id,
         doctor_id,
         medicine_code,
+    );
+
+    // ==========================================================
+    // Selective disclosure
+    // ==========================================================
+
+    let disclosure_valid = disclosure::verify_disclosure(
+        medicine_code,
+        disclosed_medicine_code,
     );
 
     // ==========================================================
@@ -106,6 +117,7 @@ fn main(
     assert(policy_result[1]);
     assert(registry_valid);
     assert(signature_valid);
+    assert(disclosure_valid);
 
     outputs
 }
