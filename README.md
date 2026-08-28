@@ -75,19 +75,53 @@ The two implementations are intentionally tested independently.
 
 ```text
 zk-ePrescription/
-├── noir/
-│   ├── common/
+│
+├── README.md                         ← FIRST THING A NEW USER READS
+├── LICENSE
+├── .gitignore
+│
+├── circom/                           ← Circom + Groth16 implementation
+│   ├── README.md
+│   ├── circuits/
+│   │   ├── 01_commitment.circom
+│   │   ├── 02_identity_binding.circom
+│   │   ├── 03_nullifier.circom
+│   │   ├── 04_threshold.circom
+│   │   ├── 05_doctor_registry_merkle_lib.circom
+│   │   ├── 05_merkle_parameterized.circom
+│   │   ├── 06_schnorr_bjj.circom
+│   │   ├── 07_selective_disclosure.circom
+│   │   ├── 08_eprescription_main.circom
+│   │   ├── 09_patient_binding_issuance.circom
+│   │   └── lib_modules.circom
+│   │
+│   ├── inputs/
+│   │   ├── eprescription/
+│   │   └── merkle/
+│   │
+│   ├── scripts/
 │   ├── docs/
-│   ├── phase1_commitment_nullifier/
+│   ├── benchmarks/
+│   ├── package.json
+│   └── package-lock.json
+│
+├── noir/                             ← Noir + UltraHonk implementation
+│   ├── README.md
+│   ├── docs/
+│   │   ├── patient_identity_binding.md
+│   │   └── ...
+│   ├── common/
+│   ├── patient_binding_issuance/
 │   ├── phase2_policy/
 │   ├── phase3_registry/
 │   └── phase4_orchestrator/
 │
-├── circom/
-│   ├── circuits/
-│   ├── inputs/
-│   ├── scripts/
-│   ├── docs/
-│   └── benchmarks/
+├── paper/                            ← Research paper/material
+│   └── paper.md
 │
-└── paper/
+├── testdata/                         ← Shared/reference data
+│
+├── scripts/                          ← Repository-level scripts
+│
+└── docker/                           ← We add later
+    └── ...
