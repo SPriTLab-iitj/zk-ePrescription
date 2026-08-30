@@ -21,7 +21,7 @@ The zk-ePrescription prototype is designed to provide:
 - **Authorized Doctor Verification** — verify that the signing doctor is part of the trusted doctor registry.
 - **Patient–Prescription Binding** — associate a prescription with the registered patient's health identity during issuance.
 - **Patient Privacy** — minimize unnecessary exposure of sensitive patient and prescription information.
-- **Selective Disclosure** — reveal only the prescription attributes required for verification.
+- **Witness Privacy / Minimal Disclosure** — keep sensitive prescription information private while exposing only information required by the application workflow.
 - **Zero-Knowledge Verification** — prove required prescription properties without revealing the complete private witness.
 - **Policy Enforcement** — enforce expiry and redemption limits.
 - **Replay Protection** — prevent reuse of an already redeemed redemption slot.
@@ -37,7 +37,7 @@ At a higher level, the project focuses on:
 
 > **Integrity + Authenticity + Patient Binding + Privacy**
 
-> **Selective Disclosure + Policy Enforcement + Replay Resistance**
+> **Witness Privacy + Policy Enforcement + Replay Resistance**
 
 > **Accountability + Practical Pharmacy Workflow + Reproducibility**
 
@@ -90,7 +90,6 @@ zk-ePrescription/
 │   │   ├── 05_doctor_registry_merkle_lib.circom
 │   │   ├── 05_merkle_parameterized.circom
 │   │   ├── 06_schnorr_bjj.circom
-│   │   ├── 07_selective_disclosure.circom
 │   │   ├── 08_eprescription_main.circom
 │   │   ├── 09_patient_binding_issuance.circom
 │   │   └── lib_modules.circom

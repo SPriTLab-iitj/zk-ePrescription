@@ -60,13 +60,3 @@ template ThresholdCheck() {
 
     valid <== lessThan.out;
 }
-
-template SelectiveDisclosure() {
-    signal input medicine_code;
-    signal input disclosed_medicine_code;
-
-    signal output valid;
-
-    medicine_code === disclosed_medicine_code;
-    valid <== 1;
-}

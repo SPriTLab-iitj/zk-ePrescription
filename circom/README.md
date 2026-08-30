@@ -20,7 +20,6 @@ The Circom implementation integrates the following prescription verification
 properties:
 
 - Prescription commitment
-- Patient identity binding
 - Nullifier generation for replay protection
 - Redemption threshold enforcement
 - Authorized doctor registry membership
@@ -57,7 +56,6 @@ main e-Prescription circuit.
 06_schnorr_bjj.circom
         │
         ▼
-07_selective_disclosure.circom
         │
         ▼
 08_eprescription_main.circom
@@ -79,11 +77,22 @@ main e-Prescription circuit.
 | `05_doctor_registry_merkle_lib.circom` | Provides parameterized Merkle membership verification logic |
 | `05_merkle_parameterized.circom` | Implements the parameterized Poseidon Merkle registry |
 | `06_schnorr_bjj.circom` | Verifies the BabyJubJub/Schnorr signature |
-| `07_selective_disclosure.circom` | Enforces selective disclosure of medicine information |
-| `08_eprescription_main.circom` | Integrates the complete prescription verification flow |
+| `08_eprescription_main.circom` | Integrates the complete prescription redemption verification flow |
+| `09_patient_binding_issuance.circom` | Computes the issuance-side patient–prescription binding |
 | `lib_modules.circom` | Shared circuit imports and module definitions |
 
 ---
+
+## Patient Identity Binding
+
+The repository also includes a separate issuance-side patient-binding circuit.
+
+Registration establishes a patient binding from the authenticated external
+health-identity process. During prescription issuance, that binding is
+associated with the existing prescription commitment.
+
+The pharmacy redemption circuit does not require fresh authentication against
+the external health-identity system.
 
 ## Doctor Registry
 

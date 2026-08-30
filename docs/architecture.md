@@ -12,7 +12,7 @@ implementation, including the Poseidon2 hashing layer.
 
 ### Phase 1
 
-`phase1_commitment_nullifier/phase1_core/` contains the commitment and
+`components/commitment_nullifier/phase1_core/` contains the commitment and
 nullifier-oriented primitive implementation.
 
 ### Phase 2

@@ -18,8 +18,6 @@ template EPrescriptionMain() {
     signal input pathIndices[4];
     signal input root;
 
-    signal input disclosed_medicine_code;
-
     signal output commitment_out;
     signal output identity_ref_out;
     signal output nullifier_out;
@@ -52,11 +50,6 @@ template EPrescriptionMain() {
     threshold_check.slot_index <== slot_index;
     threshold_check.threshold <== threshold;
     threshold_check.valid === 1;
-
-    component disclosure = SelectiveDisclosure();
-    disclosure.medicine_code <== medicine_code;
-    disclosure.disclosed_medicine_code <== disclosed_medicine_code;
-    disclosure.valid === 1;
 
     component registry = DoctorRegistry(4);
     registry.doctor_leaf <== doctor_leaf;

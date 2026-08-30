@@ -175,27 +175,35 @@ A valid signature under an unauthorized key is therefore insufficient.
 
 ---
 
-## 7. Selective Disclosure
+## 7. Witness Privacy and Minimal Disclosure
 
-The current prototype selectively exposes the medicine code.
+The protocol keeps the detailed prescription and other sensitive witness
+values inside the prover-side witness.
 
-Let:
+The verifier does not require disclosure of the complete private prescription
+to establish the enforced cryptographic properties.
 
-    medicine_code
+The privacy objective is therefore to minimize information revealed during
+verification while allowing the verifier to establish:
 
-be part of the private prescription witness and:
+    C = Commit(P)
 
-    disclosed_medicine_code
+    PK_D in DoctorRegistry
 
-be the intentionally disclosed attribute.
+    VerifySig(PK_D, C, sigma_D) = 1
 
-The circuit enforces:
+    currentDate <= expiry
 
-    medicine_code = disclosed_medicine_code
+    slotIndex < quantityThreshold
 
-Only the selected attribute is intentionally disclosed by the current
-prototype. Other prescription fields remain private to the extent supported
-by the proof statement.
+    N = Nullifier(s_P, C, slotIndex)
+
+The external application may expose the information required for prescription
+dispensing, but such application-level disclosure is distinct from the
+private ZK witness.
+
+The prototype does not require the bearer to manually enumerate medicine
+codes as ZK proof inputs.
 
 ---
 
@@ -339,10 +347,10 @@ Therefore possession of an arbitrary signing key is insufficient.
 
 ---
 
-## Game 5 -- Policy / Statement Consistency Bypass
+## Game 5 -- Policy Bypass
 
-The adversary attempts to produce an accepted proof while violating an enforced
-condition.
+The adversary attempts to produce an accepted proof while violating an
+enforced prescription condition.
 
 Examples include:
 
@@ -350,9 +358,8 @@ Examples include:
 
     slotIndex >= quantityThreshold
 
-    medicine_code != disclosed_medicine_code
-
-The adversary wins if such an invalid statement is accepted.
+The adversary wins if a proof corresponding to such an invalid state is
+accepted.
 
 The corresponding circuit constraints must reject the proof.
 
@@ -360,9 +367,13 @@ The corresponding circuit constraints must reject the proof.
 
 ## Game 6 -- Linkage / Inference
 
-The adversary observes valid protocol outputs, proofs, or redemption
+The adversary observes valid public outputs, proofs, and redemption-related
 information and attempts to infer hidden patient or prescription information
-beyond the intentionally exposed values.
+beyond the information deliberately exposed by the protocol.
+
+The adversary wins if it can distinguish or infer a hidden patient or
+prescription relationship with non-negligible advantage using information
+that should remain private.
 
 The game includes unintended linkage between observations.
 
@@ -402,9 +413,12 @@ The protocol separates the following properties:
        HealthID -> B_P
        PB = Bind(B_P, C)
 
-5. Selective disclosure:
+5. Witness privacy / minimal disclosure:
 
-       medicine_code = disclosed_medicine_code
+       Full prescription remains in the private witness.
+
+       Only information deliberately exposed by the protocol/application
+       is revealed to the verifier.
 
 6. Policy enforcement:
 

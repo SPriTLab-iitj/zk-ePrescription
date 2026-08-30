@@ -26,7 +26,6 @@ echo
 echo "== Negative witness checks =="
 
 for input in \
-  eprescription_depth4_bad_disclosure.json \
   eprescription_depth4_bad_expiry.json \
   eprescription_depth4_bad_registry.json \
   eprescription_depth4_bad_root.json \
