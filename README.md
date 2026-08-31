@@ -124,3 +124,13 @@ zk-ePrescription/
 │
 └── docker/                           ← We add later
     └── ...
+
+## Docker
+
+The repository provides a reproducible Docker environment containing the
+validated cryptographic toolchain used by the research prototype.
+
+### Build
+
+```bash
+docker build -t zk-eprescription .
