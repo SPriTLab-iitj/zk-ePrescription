@@ -49,8 +49,7 @@ The prototype covers:
 - replay protection through nullifiers,
 - redemption threshold enforcement,
 - prescription expiry,
-- authorized doctor registry membership,
-- selective disclosure, and
+- authorized doctor registry membership, and
 - BabyJubJub/Schnorr signature verification.
 
 ## Implementations

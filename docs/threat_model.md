@@ -6,9 +6,9 @@ The zk-ePrescription protocol provides privacy-preserving verification of an
 electronic prescription using zero-knowledge proofs.
 
 The protocol is designed to establish prescription integrity, authorized doctor
-issuance, patient-prescription binding, selective disclosure, prescription
-policy enforcement, and replay resistance while minimizing unnecessary
-disclosure during pharmacy redemption.
+issuance, patient-prescription binding, witness privacy and minimal disclosure,
+prescription policy enforcement, and replay resistance while minimizing
+unnecessary disclosure during pharmacy redemption.
 
 The protocol is a research prototype and does not implement the external
 national-health-identity infrastructure itself.
@@ -66,8 +66,7 @@ The adversary may:
 - provide an invalid doctor registry membership path;
 - submit expired prescriptions;
 - exceed the permitted redemption threshold;
-- reuse an already redeemed redemption slot;
-- provide an inconsistent selectively disclosed medicine value; and
+- reuse an already redeemed redemption slot; and
 - observe public proof or redemption information and attempt to infer hidden
   patient or prescription information.
 

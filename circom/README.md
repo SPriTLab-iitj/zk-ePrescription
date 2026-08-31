@@ -24,7 +24,6 @@ properties:
 - Redemption threshold enforcement
 - Authorized doctor registry membership
 - Prescription expiry validation
-- Selective medicine disclosure
 - BabyJubJub/Schnorr signature verification
 - Integrated prescription verification
 - Groth16 proof generation and verification
