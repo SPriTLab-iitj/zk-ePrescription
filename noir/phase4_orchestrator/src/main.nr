@@ -44,6 +44,8 @@ fn main(
         prescription_id,
         doctor_id,
         medicine_code,
+        expiry_date,
+        quantity_threshold,
     );
 
     // ==========================================================
