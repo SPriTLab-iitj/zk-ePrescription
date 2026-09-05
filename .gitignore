@@ -4,3 +4,7 @@ build/
 *.ptau
 *.wasm
 target/
+
+# Local benchmark results
+benchmark/results/
+scripts/__pycache__/

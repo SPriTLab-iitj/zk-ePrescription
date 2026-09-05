@@ -58,6 +58,7 @@ RUN apt-get update \
         git \
         ca-certificates \
         jq \
+        time \
     && rm -rf /var/lib/apt/lists/*
 
 # ---------------------------------------------------------

@@ -1,18 +1,16 @@
-pragma circom 2.0.0;
+pragma circom 2.1.6;
 
-include "../node_modules/circomlib/circuits/poseidon.circom";
+include "lib_modules.circom";
 
-template IdentityBinding() {
-
+template IdentityBindingCircuit() {
     signal input patient_secret;
-
     signal output identity_ref;
 
-    component poseidon = Poseidon(1);
+    component i = IdentityBinding();
 
-    poseidon.inputs[0] <== patient_secret;
+    i.patient_secret <== patient_secret;
 
-    identity_ref <== poseidon.out;
+    identity_ref <== i.identity_ref;
 }
 
-component main = IdentityBinding();
+component main = IdentityBindingCircuit();

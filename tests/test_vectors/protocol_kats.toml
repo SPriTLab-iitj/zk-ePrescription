@@ -1,0 +1,54 @@
+# Canonical cross-backend protocol test vectors.
+#
+# Both Circom and Noir must independently compute these values.
+# The external harness compares each backend against the same expected value.
+
+[commitment]
+prescription_id = 1001
+doctor_id = 5001
+medicine_code = 123
+expiry_date = 20261231
+quantity_threshold = 3
+expected = "0x2206c4274f31bb0a0545087c6da9b5e5f81932fbc8617bc1e596e1c04bc85e6b"
+
+[identity]
+patient_secret = 12345
+expected = "0x25b3409cea33f22fc9d195f9309c2a72823d7c04c0db2a682339d50dd03f48e5"
+
+[patient_binding]
+patient_secret = 12345
+prescription_id = 1001
+doctor_id = 5001
+medicine_code = 123
+expiry_date = 20261231
+quantity_threshold = 3
+expected = "0x263e35e7659f3ec2f47cf359dcd4e8ffbbef97a47c50343e6d1dc12e59693e62"
+
+[nullifier]
+patient_secret = 12345
+prescription_id = 1001
+doctor_id = 5001
+medicine_code = 123
+expiry_date = 20261231
+quantity_threshold = 3
+slot_index = 1
+expected = "0x1bb48fa3640a447c6759896c2175782afea01d551c4d113b057a90a5d3fff921"
+
+[registry_leaf]
+doctor_id = 5001
+pubkey_x = "0x16b051f37589e0dcf4ad3c415c090798c10d3095bedeedabfcc709ad787f3507"
+pubkey_y = "0x62800ac9e60839fab9218e5ed9d541f4586e41275f4071816a975895d349a5e"
+expected = "0x1131c81ad5d983642c883a6820c4534d36e8429f0060942de5801f668ac12563"
+
+[merkle_node]
+left = "0x1131c81ad5d983642c883a6820c4534d36e8429f0060942de5801f668ac12563"
+right = "0x1a27882a2bbfe626401a038c88e8fa3c52aa0c9dbb8fd44b1b864a582c85cabe"
+expected = "0x0710c47591f2fcfa1c032a87141087f7af1fbfb3b23648a75b888fa36b0c97"
+
+[schnorr_challenge]
+Rx = "0x085ed469c9a9f102b6d4f6f909b8ceaf6ca49b39759ac2e0feb7e0aada8b7111"
+Ry = "0x245e25ab2bd42f0280a5ade750828dd6868f5225ae798d6b51c676f519c8f4e8"
+PKx = "0x16b051f37589e0dcf4ad3c415c090798c10d3095bedeedabfcc709ad787f3507"
+PKy = "0x62800ac9e60839fab9218e5ed9d541f4586e41275f4071816a975895d349a5e"
+commitment = "0x2206c4274f31bb0a0545087c6da9b5e5f81932fbc8617bc1e596e1c04bc85e6b"
+expected = "0x208f280d7f9d8025085c950fbaf5e012e75adec2a73a212526faa4be416bfc13"

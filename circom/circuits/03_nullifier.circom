@@ -1,21 +1,21 @@
-pragma circom 2.0.0;
+pragma circom 2.1.6;
 
-include "../node_modules/circomlib/circuits/poseidon.circom";
+include "lib_modules.circom";
 
-template Nullifier() {
+template NullifierCircuit() {
     signal input patient_secret;
     signal input commitment;
     signal input slot_index;
 
     signal output nullifier;
 
-    component poseidon = Poseidon(3);
+    component n = Nullifier();
 
-    poseidon.inputs[0] <== patient_secret;
-    poseidon.inputs[1] <== commitment;
-    poseidon.inputs[2] <== slot_index;
+    n.patient_secret <== patient_secret;
+    n.commitment <== commitment;
+    n.slot_index <== slot_index;
 
-    nullifier <== poseidon.out;
+    nullifier <== n.nullifier;
 }
 
-component main = Nullifier();
+component main = NullifierCircuit();

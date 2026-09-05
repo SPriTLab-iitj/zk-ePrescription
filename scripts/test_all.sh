@@ -35,6 +35,14 @@ echo "============== PATIENT BINDING ==================="
 )
 
 echo
+echo "==================== SHARED PROTOCOL Known Answer Tests (KATs) ======================"
+
+(
+    cd "$ROOT"
+    python3 scripts/test_shared_kats.py
+)
+
+echo
 echo "=================================================="
 echo " ALL REGRESSION TESTS PASSED"
 echo "=================================================="

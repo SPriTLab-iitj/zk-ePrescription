@@ -1,17 +1,16 @@
 pragma circom 2.1.6;
 
-include "lib_modules.circom";
+include "../../lib/poseidon2/poseidon2_commitment.circom";
 
-template CommitmentCircuit() {
+template Main() {
     signal input prescription_id;
     signal input doctor_id;
     signal input medicine_code;
     signal input expiry;
     signal input threshold;
+    signal input expected;
 
-    signal output commitment;
-
-    component c = Commitment();
+    component c = Poseidon2Commitment();
 
     c.prescription_id <== prescription_id;
     c.doctor_id <== doctor_id;
@@ -19,7 +18,16 @@ template CommitmentCircuit() {
     c.expiry <== expiry;
     c.threshold <== threshold;
 
-    commitment <== c.commitment;
+    expected === c.commitment;
 }
 
-component main = CommitmentCircuit();
+component main {
+    public [
+        prescription_id,
+        doctor_id,
+        medicine_code,
+        expiry,
+        threshold,
+        expected
+    ]
+} = Main();

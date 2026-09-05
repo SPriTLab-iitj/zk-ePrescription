@@ -52,6 +52,9 @@ template EPrescriptionMain() {
     threshold_check.valid === 1;
 
     component registry = DoctorRegistry(4);
+    registry.doctor_id <== doctor_id;
+    registry.pubkey_x <== PKx;
+    registry.pubkey_y <== PKy;
     registry.doctor_leaf <== doctor_leaf;
     registry.root <== root;
     for (var i = 0; i < 4; i++) {
