@@ -1,8 +1,6 @@
 // poseidon2_hash.nr
 //
 // Shared Poseidon2 sponge implementation for the project.
-// Milestone 1: sponge core
-// Milestone 2: domain tags + generic tagged hash helper
 
 global HASH_RATE: u32 = 3;
 

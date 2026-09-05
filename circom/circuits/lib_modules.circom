@@ -1,9 +1,12 @@
 pragma circom 2.1.6;
 
-include "../node_modules/circomlib/circuits/poseidon.circom";
 include "../node_modules/circomlib/circuits/comparators.circom";
 include "06_schnorr_bjj.circom";
 include "05_doctor_registry_merkle_lib.circom";
+
+include "../lib/poseidon2/poseidon2_commitment.circom";
+include "../lib/poseidon2/poseidon2_identity.circom";
+include "../lib/poseidon2/poseidon2_nullifier.circom";
 
 template Commitment() {
     signal input prescription_id;
@@ -14,23 +17,26 @@ template Commitment() {
 
     signal output commitment;
 
-    component poseidon = Poseidon(5);
-    poseidon.inputs[0] <== prescription_id;
-    poseidon.inputs[1] <== doctor_id;
-    poseidon.inputs[2] <== medicine_code;
-    poseidon.inputs[3] <== expiry;
-    poseidon.inputs[4] <== threshold;
+    component c = Poseidon2Commitment();
 
-    commitment <== poseidon.out;
+    c.prescription_id <== prescription_id;
+    c.doctor_id <== doctor_id;
+    c.medicine_code <== medicine_code;
+    c.expiry <== expiry;
+    c.threshold <== threshold;
+
+    commitment <== c.commitment;
 }
 
 template IdentityBinding() {
     signal input patient_secret;
     signal output identity_ref;
 
-    component poseidon = Poseidon(1);
-    poseidon.inputs[0] <== patient_secret;
-    identity_ref <== poseidon.out;
+    component i = Poseidon2Identity();
+
+    i.patient_secret <== patient_secret;
+
+    identity_ref <== i.identity_ref;
 }
 
 template Nullifier() {
@@ -40,12 +46,13 @@ template Nullifier() {
 
     signal output nullifier;
 
-    component poseidon = Poseidon(3);
-    poseidon.inputs[0] <== patient_secret;
-    poseidon.inputs[1] <== commitment;
-    poseidon.inputs[2] <== slot_index;
+    component n = Poseidon2Nullifier();
 
-    nullifier <== poseidon.out;
+    n.patient_secret <== patient_secret;
+    n.commitment <== commitment;
+    n.slot_index <== slot_index;
+
+    nullifier <== n.nullifier;
 }
 
 template ThresholdCheck() {

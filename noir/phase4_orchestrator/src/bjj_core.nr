@@ -4,7 +4,6 @@
 // Minimal elliptic-curve implementation for the UltraHonk
 // e-Prescription prototype.
 //
-// Phase 4B – Milestone 2A
 // Coordinate Types
 // ==========================================================
 

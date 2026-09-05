@@ -1,8 +1,12 @@
 pragma circom 2.1.6;
 
-include "../node_modules/circomlib/circuits/poseidon.circom";
+include "../lib/poseidon2/poseidon2_registry_leaf.circom";
+include "../lib/poseidon2/poseidon2_merkle.circom";
 
 template DoctorRegistry(DEPTH) {
+    signal input doctor_id;
+    signal input pubkey_x;
+    signal input pubkey_y;
     signal input doctor_leaf;
     signal input pathElements[DEPTH];
     signal input pathIndices[DEPTH];
@@ -17,6 +21,12 @@ template DoctorRegistry(DEPTH) {
     signal leftB[DEPTH];
     signal rightA[DEPTH];
     signal rightB[DEPTH];
+
+    component leaf_hash = Poseidon2RegistryLeaf();
+    leaf_hash.doctor_id <== doctor_id;
+    leaf_hash.pubkey_x <== pubkey_x;
+    leaf_hash.pubkey_y <== pubkey_y;
+    leaf_hash.leaf === doctor_leaf;
 
     component hash[DEPTH];
 
@@ -33,11 +43,11 @@ template DoctorRegistry(DEPTH) {
         rightB[i] <== pathElements[i] * (1 - pathIndices[i]);
         right[i] <== rightA[i] + rightB[i];
 
-        hash[i] = Poseidon(2);
-        hash[i].inputs[0] <== left[i];
-        hash[i].inputs[1] <== right[i];
+        hash[i] = Poseidon2MerkleNode();
+        hash[i].left <== left[i];
+        hash[i].right <== right[i];
 
-        currentHash[i + 1] <== hash[i].out;
+        currentHash[i + 1] <== hash[i].node;
     }
 
     currentHash[DEPTH] === root;

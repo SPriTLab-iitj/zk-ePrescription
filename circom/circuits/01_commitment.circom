@@ -1,9 +1,8 @@
-pragma circom 2.0.0;
+pragma circom 2.1.6;
 
-include "../node_modules/circomlib/circuits/poseidon.circom";
+include "lib_modules.circom";
 
-template Commitment() {
-
+template CommitmentCircuit() {
     signal input prescription_id;
     signal input doctor_id;
     signal input medicine_code;
@@ -12,15 +11,15 @@ template Commitment() {
 
     signal output commitment;
 
-    component poseidon = Poseidon(5);
+    component c = Commitment();
 
-    poseidon.inputs[0] <== prescription_id;
-    poseidon.inputs[1] <== doctor_id;
-    poseidon.inputs[2] <== medicine_code;
-    poseidon.inputs[3] <== expiry;
-    poseidon.inputs[4] <== threshold;
+    c.prescription_id <== prescription_id;
+    c.doctor_id <== doctor_id;
+    c.medicine_code <== medicine_code;
+    c.expiry <== expiry;
+    c.threshold <== threshold;
 
-    commitment <== poseidon.out;
+    commitment <== c.commitment;
 }
 
-component main = Commitment();
+component main = CommitmentCircuit();

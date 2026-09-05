@@ -87,10 +87,9 @@ zk-ePrescription/
 │   │   ├── 03_nullifier.circom
 │   │   ├── 04_threshold.circom
 │   │   ├── 05_doctor_registry_merkle_lib.circom
-│   │   ├── 05_merkle_parameterized.circom
 │   │   ├── 06_schnorr_bjj.circom
 │   │   ├── 08_eprescription_main.circom
-│   │   ├── 09_patient_binding_issuance.circom
+│   │   ├── 09_patient_prescription_binding_issuance.circom
 │   │   └── lib_modules.circom
 │   │
 │   ├── inputs/

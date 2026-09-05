@@ -49,7 +49,6 @@ main e-Prescription circuit.
         │
         ▼
 05_doctor_registry_merkle_lib.circom
-05_merkle_parameterized.circom
         │
         ▼
 06_schnorr_bjj.circom
@@ -74,10 +73,9 @@ main e-Prescription circuit.
 | `03_nullifier.circom` | Generates a deterministic nullifier for replay protection |
 | `04_threshold.circom` | Enforces the configured prescription redemption threshold |
 | `05_doctor_registry_merkle_lib.circom` | Provides parameterized Merkle membership verification logic |
-| `05_merkle_parameterized.circom` | Implements the parameterized Poseidon Merkle registry |
 | `06_schnorr_bjj.circom` | Verifies the BabyJubJub/Schnorr signature |
 | `08_eprescription_main.circom` | Integrates the complete prescription redemption verification flow |
-| `09_patient_binding_issuance.circom` | Computes the issuance-side patient–prescription binding |
+| `09_patient_prescription_binding_issuance.circom` | Computes the issuance-side patient–prescription binding |
 | `lib_modules.circom` | Shared circuit imports and module definitions |
 
 ---
